@@ -9,8 +9,8 @@ module Autopilot
 
     def request(method, uri, headers = {}, data = nil)
       http = Net::HTTP.new(uri.host, uri.port)
-      http.use_ssl = true
-      http.verify_mode = OpenSSL::SSL::VERIFY_PEER
+      http.use_ssl = false
+      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
       request = REQUEST_CLASSES[method].new(uri.request_uri)
       headers.each { |k,v| request[k] = v }
